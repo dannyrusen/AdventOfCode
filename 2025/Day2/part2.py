@@ -1,6 +1,6 @@
 import time
 
-from examples import ids
+from input import ids
 
 def get_id_range(id_range: str) -> list[int]:
     start, end = map(int, id_range.split("-"))
@@ -9,10 +9,29 @@ def get_id_range(id_range: str) -> list[int]:
 def check_valid_id(product_id: int) -> bool:
     s = str(product_id)
     n = len(s)
-    if n % 2 != 0:
+
+    is_false = False
+    for i in range(1, n + 1):
+        if not check_sequence(s, i):
+            is_false = True
+            break
+
+    if is_false:
+        return False
+
+    return True
+
+def check_sequence(s: str, length: int) -> bool:
+    str_part = s[0:length]
+
+    if str_part == s:
         return True
-    mid = n // 2
-    return s[:mid] != s[mid:]
+
+    for i in range(length, len(s), length ):
+        if str_part != s[i:i+length]:
+            return True
+
+    return False
 
 def main():
     input_ids = ids.split(",")
