@@ -11,20 +11,13 @@ def check_valid_id(product_id: int) -> bool:
     n = len(s)
 
     for i in range(1, n // 2 + 1):
-        if check_sequence(s, i):
-            return False
+        if n % i == 0:
+            pattern = s[:i]
+            num_repeats = n // i
+            if s == pattern * num_repeats:
+                return False
 
     return True
-
-def check_sequence(s: str, length: int) -> bool:
-    if length == 0:
-        return True
-
-    if len(s) % length != 0:
-        return False
-
-    num_repeats = len(s) // length
-    return s == s[:length] * num_repeats
 
 def main():
     input_ids = ids.split(",")
