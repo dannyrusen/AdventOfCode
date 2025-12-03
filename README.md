@@ -1,2 +1,2 @@
-# tictactoe
-Playing with tictactoe and AI
+# Advent Of Code
+
