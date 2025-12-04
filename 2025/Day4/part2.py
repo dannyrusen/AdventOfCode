@@ -32,13 +32,13 @@ def can_be_accessed_by_forklift(paper_roll_rows, row_index, col_index) -> bool:
     return False
 
 def main():
-    paper_roll_rows = [f".{row}." for row in input_data.splitlines()]
+    paper_roll_rows = [list(f".{row}.") for row in input_data.splitlines()]
 
     start_time = time.perf_counter()
 
     paper_roll_len = len(paper_roll_rows[0])
-    paper_row_empty_row = "." * paper_roll_len
-    paper_roll_rows.insert(0, paper_row_empty_row)
+    paper_row_empty_row = list("." * paper_roll_len)
+    paper_roll_rows.insert(0, list(paper_row_empty_row))
     paper_roll_rows.append(paper_row_empty_row)
 
     total_number_of_rolls_removed = 0
@@ -65,7 +65,7 @@ def main():
     end_time = time.perf_counter()
 
     print(f"Done")
-    print(f"Number of accessible papers: {number_of_accessible_papers}")
+    print(f"Total number of rolls removed: {total_number_of_rolls_removed}")
 
     print(f"Total execution time: {end_time - start_time:.6f}s")
 
